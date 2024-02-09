@@ -260,8 +260,8 @@ public class Policy
    }
    
    /**
-      The getPolicyPrice method calculates the policy price based on the holderAge, smokingStatus, holderHeight,
-      holderWeight fields and the calculated holder BMI
+      The getPolicyPrice method calculates the policy price based on the holderAge, 
+      smokingStatus, holderHeight, sholderWeight fields and the calculated holder BMI
       
       @param age     The policy holder age     
       @param smoke   The policy holder smoking status
@@ -273,14 +273,14 @@ public class Policy
    
    public double getPolicyPrice(int age, String smoke, double height, double weight)
    {
-      //Constant to store base fee
+      //Constants to store fees
       
       final double BASE_FEE = 600.00, 
                    AGE_FEE = 75.00, 
-                   SMOKER_FEE = 100.00,
-                   BMI = getHolderBmi(height, weight);
+                   SMOKER_FEE = 100.00;
                    
-      double total = BASE_FEE;
+      double total = BASE_FEE,
+             bmi = getHolderBmi(height, weight);
       
       //If statement to determine age fee if applicable 
       
@@ -309,9 +309,9 @@ public class Policy
       
       //If statement to determine BMI fee if applicable
       
-      if (BMI > 35)
+      if (bmi > 35)
       {
-         total += (BMI - 35) * 20;
+         total += (bmi - 35) * 20;
       }
       else
       {
@@ -319,8 +319,7 @@ public class Policy
       }
       
       //return total
-      return total;
-      
+      return total; 
    }
    
    //End calculation methods
