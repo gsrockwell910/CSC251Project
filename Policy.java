@@ -5,7 +5,7 @@
 public class Policy
 {
    //Create all necessary fields, declared as private to encapsulate data
-   private int policyNumber;
+   private String policyNumber;
    private String providerName;
    private String holderFirstName;
    private String holderLastName;
@@ -22,14 +22,14 @@ public class Policy
    */
    public Policy()
    {
-      policyNumber = 1;
-      providerName = " ";
-      holderFirstName = " ";
-      holderLastName = " ";
-      holderAge = 1;
-      smokingStatus = " ";
-      holderHeight = 1.00;
-      holderWeight = 1.00;
+      policyNumber = "";
+      providerName = "";
+      holderFirstName = "";
+      holderLastName = "";
+      holderAge = 0;
+      smokingStatus = "";
+      holderHeight = 0;
+      holderWeight = 0;
    }
    
    /**
@@ -46,7 +46,7 @@ public class Policy
       @param height     The policy holders height in inches
       @param weight     The policy holders weight in pounds
    */
-   public Policy(int polNum, String provName, String first, String last,
+   public Policy(String polNum, String provName, String first, String last,
                  int age, String smokeStat, double height, double weight)
    {
       policyNumber = polNum;
@@ -67,7 +67,7 @@ public class Policy
       @param num     The policy number to be set
    */
    
-   public void setPolicyNumber(int num)
+   public void setPolicyNumber(String num)
    {
       policyNumber = num;
    }
@@ -159,7 +159,7 @@ public class Policy
       @return     The value stored in the policyNumber field
    */
    
-   public int getPolicyNumber()
+   public String getPolicyNumber()
    {
       return policyNumber;
    }
@@ -254,9 +254,11 @@ public class Policy
       @return           The policy holders calculated BMI
    */
    
-   public double getHolderBmi(double height, double weight)
+   public double getHolderBmi()
    {
-      return (weight * 703) / (Math.pow(height, 2));
+      final int CONVERSION_FACTOR = 703;
+      
+      return (holderWeight * CONVERSION_FACTOR) / (holderHeight * holderHeight);
    }
    
    /**
@@ -271,51 +273,37 @@ public class Policy
       @return        The calculated policy price
    */
    
-   public double getPolicyPrice(int age, String smoke, double height, double weight)
+   public double getPolicyPrice()
    {
       //Constants to store fees
       
       final double BASE_FEE = 600.00, 
                    AGE_FEE = 75.00, 
-                   SMOKER_FEE = 100.00;
+                   SMOKER_FEE = 100.00,
+                   BMI_FEE = 20.00;
                    
-      double total = BASE_FEE,
-             bmi = getHolderBmi(height, weight);
+      final int AGE_THRESHOLD = 50,
+                BMI_THRESHOLD = 35;
+                   
+      double total = BASE_FEE;
       
       //If statement to determine age fee if applicable 
       
-      if (age > 50)
+      if (holderAge > AGE_THRESHOLD)
       {
          total += AGE_FEE;
       }
-      else
-      {
-         total += 0.0;
-      }
       
-      //Switch statement to determine smoker fee if applicable
-      
-      switch(smoke)
+      if(smokingStatus.equalsIgnoreCase("smoker"))
       {
-         case "smoker":
-            total += SMOKER_FEE;
-            break;
-         case "non-smoker":
-            total += 0.0;
-            break;
-         default:
-            total += 0.0;
+         total += SMOKER_FEE;
       }
       
       //If statement to determine BMI fee if applicable
       
-      if (bmi > 35)
+      if (getHolderBmi() > BMI_THRESHOLD)
       {
-         total += (bmi - 35) * 20;
-      }
-      else
-      {
-         total += 0.0;
+         total += (getHolderBmi() - BMI_THRESHOLD) * BMI_FEE;
       }
       
       //return total
@@ -323,4 +311,22 @@ public class Policy
    }
    
    //End calculation methods
+   
+   //Start display method
+   
+   public void displayInformation()
+   {
+      System.out.println("\nPolicy Number: " + getPolicyNumber());
+      System.out.println("\nProvider Name: " + getProviderName());
+      System.out.println("\nPolicyholder's First Name: " + getHolderFirstName());
+      System.out.println("\nPolicyholder's Last Name: " + getHolderLastName());
+      System.out.println("\nPolicyholder's Age: " + getHolderAge());
+      System.out.println("\nPolicyholder's Smoking Status: " + getSmokingStatus());
+      System.out.println("\nPolicyholder's Height: " + getHolderHeight() + " inches");
+      System.out.println("\nPolicyholder's Weight: " + getHolderWeight() + " pounds");
+      System.out.printf("\nPolicyholder's BMI: %.2f", getHolderBmi());                                                                     
+      System.out.printf("\n\nPolicy Price: $%,.2f", getPolicyPrice());
+   }
+   
+   //End display method
 }

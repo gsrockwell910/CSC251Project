@@ -15,10 +15,10 @@ public class Project_gavin_rockwell
       //declare all necessary variable
       Scanner keyboard = new Scanner(System.in);
       
-      int policyNumber = 0,
-          age = 0;
+      int age = 0;
           
-      String provider = " ",
+      String policyNumber = " ",
+             provider = " ",
              firstName = " ",
              lastName = " ",
              smokeStatus = " ";
@@ -30,10 +30,7 @@ public class Project_gavin_rockwell
       //prompt user to enter necessary information
       
       System.out.print("Please enter the Policy Number: ");
-      policyNumber = keyboard.nextInt();
-      
-      //clear the buffer
-      keyboard.nextLine();
+      policyNumber = keyboard.nextLine();
              
       System.out.print("\nPlease enter the Provider Name: ");
       provider = keyboard.nextLine();
@@ -71,6 +68,9 @@ public class Project_gavin_rockwell
       //create policy object with given information
       Policy policy = new Policy(policyNumber, provider, firstName, lastName, age, smokeStatus, height, weight);
       
+      System.out.println();
+      
+      /**
       //output policy information from Policy object
       System.out.println("\nPolicy Number: " + policy.getPolicyNumber());
       System.out.println("\nProvider Name: " + policy.getProviderName());
@@ -78,14 +78,14 @@ public class Project_gavin_rockwell
       System.out.println("\nPolicyholder's Last Name: " + policy.getHolderLastName());
       System.out.println("\nPolicyholder's Age: " + policy.getHolderAge());
       System.out.println("\nPolicyholder's Smoking Status: " + policy.getSmokingStatus());
-      System.out.println("\nPolicyholder's Height: " + policy.getHolderHeight());
-      System.out.println("\nPolicyholder's Weight: " + policy.getHolderWeight());
-      System.out.printf("\nPolicyholder's BMI: %.2f", policy.getHolderBmi(policy.getHolderHeight(), 
-                                                                          policy.getHolderWeight()));
-                                                                            
-      System.out.printf("\n\nPolicy Price: $%,.2f", policy.getPolicyPrice(policy.getHolderAge(), 
-                                                                          policy.getSmokingStatus(),
-                                                                          policy.getHolderHeight(), 
-                                                                          policy.getHolderWeight()));
+      System.out.println("\nPolicyholder's Height: " + policy.getHolderHeight() + " inches");
+      System.out.println("\nPolicyholder's Weight: " + policy.getHolderWeight() + " pounds");
+      System.out.printf("\nPolicyholder's BMI: %.2f", policy.getHolderBmi());                                                                     
+      System.out.printf("\n\nPolicy Price: $%,.2f", policy.getPolicyPrice());
+      */
+      
+      //output policy information from Policy object
+      
+      policy.displayInformation();
    }
 }
