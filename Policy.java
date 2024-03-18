@@ -314,6 +314,9 @@ public class Policy
    
    //Start display method
    
+   /**
+      The display Information method displays all information related to a users policy.
+   */
    public void displayInformation()
    {
       System.out.println("\nPolicy Number: " + getPolicyNumber());
