@@ -81,7 +81,29 @@ public class Project_gavin_rockwell
         //close file
         inputFile.close();
         
-        //display output 
+        //display output
+        for(int i = 0; i < policyList.size(); i++)
+        {
+            policyList.get(i).displayInformation();
+            //two blanks between policies
+            System.out.println();
+            System.out.println();
+            
+            //determine number of smokers
+            if( policyList.get(i).getSmokingStatus().equalsIgnoreCase("smoker") )
+            {
+                  totalSmoke += 1;
+            }
+            else
+            {
+                  totalNoSmoke += 1;
+            }
+        }
+        //blank line
+        System.out.println();
+        //display smokers
+        System.out.printf("The number of policies with a smoker is: %d \n\nThe number of policies with a non-smoker is: %d", totalSmoke, totalNoSmoke);
+      
       }
       
       //catch exceptions
