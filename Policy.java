@@ -324,7 +324,7 @@ public class Policy
       System.out.println("\nPolicyholder's First Name: " + getHolderFirstName());
       System.out.println("\nPolicyholder's Last Name: " + getHolderLastName());
       System.out.println("\nPolicyholder's Age: " + getHolderAge());
-      System.out.println("\nPolicyholder's Smoking Status: " + getSmokingStatus());
+      System.out.println("\nPolicyholder's Smoking Status (smoker/non-smoker): " + getSmokingStatus());
       System.out.println("\nPolicyholder's Height: " + getHolderHeight() + " inches");
       System.out.println("\nPolicyholder's Weight: " + getHolderWeight() + " pounds");
       System.out.printf("\nPolicyholder's BMI: %.2f", getHolderBmi());                                                                     
