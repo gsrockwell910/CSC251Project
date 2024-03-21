@@ -12,35 +12,29 @@ public class Project_gavin_rockwell
       The main method demonstrates the Policy class
    */
 
-   public static void main(String[] args)
-   {
-   
-      //try clause to handle expections
-      try
-      {
-         //create instance of File class
-         File file = new File("PolicyInformation.txt");
-         
-         //Scanner with input file passed as argument
-         Scanner inputFile = new Scanner(file);
-      
+   public static void main(String[] args) throws IOException
+   {  
          //declare variables
          int age = 0,
-             totalSmoke = 0,
-             totalNoSmoke = 0;
+             totalSmoke = 0;
           
          String policyNumber = "",
                 provider = "",
                 firstName = "",
                 lastName = "",
-                smokeStatus = "",
-                fileInput = "";
+                smokeStatus = "";
             
          double height = 0.0,
                 weight = 0.0;
                 
          //create arraylist to hold objects
          ArrayList<Policy> policyList = new ArrayList<Policy>();
+         
+          //create instance of File class
+         File file = new File("PolicyInformation.txt");
+         
+         //Scanner with input file passed as argument
+         Scanner inputFile = new Scanner(file);
          
          while( inputFile.hasNext() )
          {
@@ -49,20 +43,11 @@ public class Project_gavin_rockwell
             provider = inputFile.nextLine();
             firstName = inputFile.nextLine();
             lastName = inputFile.nextLine();
-            
-            //parse integer
-            fileInput = inputFile.nextLine();
-            age = Integer.parseInt(fileInput);
-            
-            //string
+            age = inputFile.nextInt();
+            inputFile.nextLine();
             smokeStatus = inputFile.nextLine();
-            
-            //parse doubles
-            fileInput = inputFile.nextLine();
-            height = Double.parseDouble(fileInput);
-            
-            fileInput = inputFile.nextLine();
-            weight = Double.parseDouble(fileInput);
+            height = inputFile.nextDouble();
+            weight = inputFile.nextDouble();
             
             //check for end of file
             if( inputFile.hasNext() )
@@ -70,47 +55,37 @@ public class Project_gavin_rockwell
                //skip blank line
                inputFile.nextLine();
             }
-            
-            //create objects
-            Policy p = new Policy(policyNumber, provider, firstName, lastName, age, smokeStatus, height, weight);
+            if( inputFile.hasNext() )
+            {
+               inputFile.nextLine();
+            }
             
             //add object to arraylist
-            policyList.add(p);
+            policyList.add( new Policy(policyNumber, provider, firstName, lastName, age, smokeStatus, height, weight) );
         }
         
         //close file
         inputFile.close();
         
         //display output
-        for(int i = 0; i < policyList.size(); i++)
+        for(Policy policy : policyList)
         {
-            policyList.get(i).displayInformation();
+            policy.displayInformation();
             //two blanks between policies
             System.out.println();
             System.out.println();
             
             //determine number of smokers
-            if( policyList.get(i).getSmokingStatus().equalsIgnoreCase("smoker") )
+            if( policy.getSmokingStatus().equalsIgnoreCase("smoker") )
             {
-                  totalSmoke += 1;
-            }
-            else
-            {
-                  totalNoSmoke += 1;
+                  totalSmoke++;
             }
         }
         //blank line
         System.out.println();
         //display smokers
-        System.out.printf("The number of policies with a smoker is: %d \n\nThe number of policies with a non-smoker is: %d", totalSmoke, totalNoSmoke);
+        System.out.printf("The number of policies with a smoker is: %d \n\nThe number of policies with a non-smoker is: %d", 
+                           totalSmoke, (policyList.size() - totalSmoke) );
       
-      }
-      
-      //catch exceptions
-      catch(IOException ex)
-      {  
-         //display error message
-         System.out.println( "Something went wrong while reading the file: " + ex.getMessage() );
-      }
    }
 }
