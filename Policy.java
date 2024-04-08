@@ -7,12 +7,12 @@ public class Policy
    //Create all necessary fields, declared as private to encapsulate data
    private String policyNumber;
    private String providerName;
-   private String holderFirstName;
-   private String holderLastName;
-   private int holderAge;
-   private String smokingStatus;
-   private double holderHeight;
-   private double holderWeight;
+   //private String holderFirstName;
+   //private String holderLastName;
+   //private int holderAge;
+   //private String smokingStatus;
+   //private double holderHeight;
+   //private double holderWeight;
    
    /**
       No-arg constructor
@@ -24,12 +24,12 @@ public class Policy
    {
       policyNumber = "";
       providerName = "";
-      holderFirstName = "";
-      holderLastName = "";
-      holderAge = 0;
-      smokingStatus = "";
-      holderHeight = 0;
-      holderWeight = 0;
+      //holderFirstName = "";
+      //holderLastName = "";
+      //holderAge = 0;
+      //smokingStatus = "";
+      //holderHeight = 0;
+      //holderWeight = 0;
    }
    
    /**
@@ -46,17 +46,17 @@ public class Policy
       @param height     The policy holders height in inches
       @param weight     The policy holders weight in pounds
    */
-   public Policy(String polNum, String provName, String first, String last,
-                 int age, String smokeStat, double height, double weight)
+   public Policy(String polNum, String provName)/*, String first, String last,
+                 int age, String smokeStat, double height, double weight)*/
    {
       policyNumber = polNum;
       providerName = provName;
-      holderFirstName = first;
-      holderLastName = last;
-      holderAge = age;
-      smokingStatus = smokeStat;
-      holderHeight = height;
-      holderWeight = weight;
+      //holderFirstName = first;
+      //holderLastName = last;
+      //holderAge = age;
+      //smokingStatus = smokeStat;
+      //holderHeight = height;
+      //holderWeight = weight;
    }
    
    //Start accessor methods
@@ -89,10 +89,10 @@ public class Policy
       @param fName     The holder first name to be set
    */
    
-   public void setHolderFirstName(String fName)
-   {
-      holderFirstName = fName;
-   }
+   //public void setHolderFirstName(String fName)
+   //{
+   //   holderFirstName = fName;
+   //}
    
    /**
       The setHolderLastName method allows the holder last name to be set with a given argument
@@ -100,10 +100,10 @@ public class Policy
       @param lName     The holder last name to be set
    */
    
-   public void setHolderLastName(String lName)
-   {
-      holderLastName = lName;
-   }
+   //public void setHolderLastName(String lName)
+   //{
+   //   holderLastName = lName;
+   //}
    
    /**
       The setHolderAge method allows the holder age to be set with a given argument
@@ -111,10 +111,10 @@ public class Policy
       @param a     The holder age to be set
    */
    
-   public void setHolderAge(int a)
-   {
-      holderAge = a;
-   }
+   //public void setHolderAge(int a)
+   //{
+   //   holderAge = a;
+   //}
    
    /**
       The setSmokingStatus method allows the holder smoking status to be set with a given argument
@@ -122,10 +122,10 @@ public class Policy
       @param smoke     The holder smoking status to be set
    */
    
-   public void setSmokingStatus(String smoke)
-   {
-      smokingStatus = smoke;
-   }
+   //public void setSmokingStatus(String smoke)
+   //{
+   //  smokingStatus = smoke;
+   //}
 
    /**
       The setHolderHeight method allows the holder height to be set with a given argument
@@ -133,10 +133,10 @@ public class Policy
       @param h     The holder height to be set
    */
    
-   public void setHolderHeight(double h)
-   {
-      holderHeight = h;
-   }
+   //public void setHolderHeight(double h)
+   //{
+   //   holderHeight = h;
+   //}
    
    /**
       The setHolderWeight method allows the holder weight to be set with a given argument
@@ -144,10 +144,10 @@ public class Policy
       @param w     The holder weight to be set
    */
    
-   public void setHolderWeight(double w)
-   {
-      holderWeight = w;
-   }
+   //public void setHolderWeight(double w)
+   //{
+   //   holderWeight = w;
+   //}
 
    //End accessor methods
    
@@ -181,10 +181,10 @@ public class Policy
       @return     The value stored in the holderFirstName field
    */
    
-   public String getHolderFirstName()
-   {
-      return holderFirstName;
-   }
+   //public String getHolderFirstName()
+   //{
+   //   return holderFirstName;
+   //}
    
    /**
       The getHolderLastName method gets the value stored in the holderLastName field
@@ -192,10 +192,10 @@ public class Policy
       @return     The value stored in the holderLastName field
    */
    
-   public String getHolderLastName()
-   {
-      return holderLastName;
-   }
+   //public String getHolderLastName()
+   //{
+   //   return holderLastName;
+   //}
    
    /**
       The getHolderAge method gets the value stored in the holderAge field
@@ -203,10 +203,10 @@ public class Policy
       @return     The value stored in the holderAge field
    */
    
-   public int getHolderAge()
-   {
-      return holderAge;
-   }
+   //public int getHolderAge()
+   //{
+   //  return holderAge;
+   //}
    
    /**
       The getSmokingStatus method gets the value stored in the smokingStatus field
@@ -214,10 +214,10 @@ public class Policy
       @return     The value stored in the smokingStatus field
    */
    
-   public String getSmokingStatus()
-   {
-      return smokingStatus;
-   }
+   //public String getSmokingStatus()
+   //{
+   //   return smokingStatus;
+   //}
    
    /**
       The getHolderHeight method gets the value stored in the holderHeight field
@@ -225,10 +225,10 @@ public class Policy
       @return     The value stored in the holderHeight field
    */
    
-   public double getHolderHeight()
-   {
-      return holderHeight;
-   }
+   //public double getHolderHeight()
+   //{
+   //   return holderHeight;
+   //}
    
    /**
       The getHolderWeight method gets the value stored in the holderWeight field
@@ -236,10 +236,10 @@ public class Policy
       @return     The value stored in the holderWeight field
    */
    
-   public double getHolderWeight()
-   {
-      return holderWeight;
-   }
+   //public double getHolderWeight()
+   //{
+   //   return holderWeight;
+   //}
    
    //End mutator methods
    
@@ -254,12 +254,12 @@ public class Policy
       @return           The policy holders calculated BMI
    */
    
-   public double getHolderBmi()
-   {
-      final int CONVERSION_FACTOR = 703;
-      
-      return (holderWeight * CONVERSION_FACTOR) / (holderHeight * holderHeight);
-   }
+   //public double getHolderBmi()
+   //{
+   //   final int CONVERSION_FACTOR = 703;
+   //   
+   //   return (holderWeight * CONVERSION_FACTOR) / (holderHeight * holderHeight);
+   //}
    
    /**
       The getPolicyPrice method calculates the policy price based on the holderAge, 
