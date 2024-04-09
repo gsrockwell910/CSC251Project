@@ -7,6 +7,65 @@ public class PolicyHolder
    private double holderHeight;
    private double holderWeight;
    
+   /**
+      No-arg constructor
+      
+      The PolicyHolder no-arg constructer assigns default values to all of the PolicyHolder classes fields, 
+      if no arguments are given when creating a PolicyHolder object
+   */
+   public PolicyHolder()
+   {
+      holderFirstName = "";
+      holderLastName = "";
+      holderAge = 0;
+      smokingStatus = "";
+      holderHeight = 0.0;
+      holderWeight = 0.0;
+   }
+
+   
+   /**
+      Constructor
+      
+      The PolicyHolder constructor constructs a PolicyHolder object with provided arguments
+      
+      @param f     The holders first name
+      @param l     The holders last name
+      @param a     The holders age
+      @param smok  The holders smoking status
+      @param h     The holders height
+      @param w     The holders weight
+   */
+
+   public PolicyHolder(String f, String l, int a, String smok, double h, double w)
+   {
+      holderFirstName = f;
+      holderLastName = l;
+      holderAge = a;
+      smokingStatus = smok;
+      holderHeight = h;
+      holderWeight = w;
+   }
+   
+   /**
+      Copy Constructor
+      
+      The PolicyHolder copy constructor constructs a PolicyHolder object with provided argument
+      
+      @param obj2    The object to copy
+   */
+
+   public PolicyHolder(PolicyHolder obj2)
+   {
+      holderFirstName = obj2.holderFirstName;
+      holderLastName = obj2.holderLastName;
+      holderAge = obj2.holderAge;
+      smokingStatus = obj2.smokingStatus;
+      holderHeight = obj2.holderHeight;
+      holderWeight = obj2.holderWeight;
+   }
+
+   
    //Start mutator
    
    /**
@@ -179,7 +238,7 @@ public class PolicyHolder
                    "\nPolicyholder's Smoking Status (smoker/non-smoker): " + getSmokingStatus() +
                    "\nPolicyholder's Height: " + getHolderHeight() + " inches" +
                    "\nPolicyholder's Weight: " + getHolderWeight() + " pounds" +
-                   "\nPolicyholder's BMI: %.2f" + getHolderBmi();                                                                    
+                   "\nPolicyholder's BMI: " + getHolderBmi();                                                                    
       
       //return string
       return str;
