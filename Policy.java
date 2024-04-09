@@ -7,6 +7,7 @@ public class Policy
    //Create all necessary fields, declared as private to encapsulate data
    private String policyNumber;
    private String providerName;
+   private static int numPol = 0;
    
    /**
       No-arg constructor
@@ -18,6 +19,8 @@ public class Policy
    {
       policyNumber = "";
       providerName = "";
+      
+      numPol++;
    }
    
    /**
@@ -32,6 +35,8 @@ public class Policy
    {
       policyNumber = polNum;
       providerName = provName;
+      
+      numPol++;
    }
    
    //Start mutator methods
