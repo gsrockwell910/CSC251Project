@@ -7,7 +7,8 @@ public class Policy
    //Create all necessary fields, declared as private to encapsulate data
    private String policyNumber;
    private String providerName;
-   private static int numPol = 0;
+   public static int numPol = 0;
+   private PolicyHolder policyHolder;
    
    /**
       No-arg constructor
@@ -19,6 +20,7 @@ public class Policy
    {
       policyNumber = "";
       providerName = "";
+      policyHolder = new PolicyHolder();
       
       numPol++;
    }
@@ -31,10 +33,11 @@ public class Policy
       @param polNum     The holders policy number
       @param provName   The name of the insurance provider
    */
-   public Policy(String polNum, String provName)
+   public Policy(String polNum, String provName, PolicyHolder polHol)
    {
       policyNumber = polNum;
       providerName = provName;
+      policyHolder = new PolicyHolder(polHol);
       
       numPol++;
    }
@@ -62,6 +65,18 @@ public class Policy
    {
       providerName = pName;
    }
+   
+   /**
+      The setPolicyHolder method allows the policy holder to be set with a given argument
+      
+      @param polHol     a PolicyHolder object
+   */
+   
+   public void setPolicyHolder(PolicyHolder polHol)
+   {
+      policyHolder = new PolicyHolder(polHol);
+   }
+
    //End mutator methods
      
    //Start accessor methods
@@ -88,6 +103,17 @@ public class Policy
       return providerName;
    }
    
+   /**
+      The getPolicyHolder method returns a copy of the values stored in the policyHolder field
+      
+      @return     the policyHolder field
+   */
+   
+   public PolicyHolder getPolicyHolder()
+   {
+      return new PolicyHolder(policyHolder);
+   }
+
    //End accessor methods
    
    //Start calculation methods
@@ -115,21 +141,21 @@ public class Policy
       
       //If statement to determine age fee if applicable 
       
-      if (holderAge > AGE_THRESHOLD)
+      if (policyHolder.getHolderAge() > AGE_THRESHOLD)
       {
          total += AGE_FEE;
       }
       
-      if(smokingStatus.equalsIgnoreCase("smoker"))
+      if(policyHolder.getSmokingStatus().equalsIgnoreCase("smoker"))
       {
          total += SMOKER_FEE;
       }
       
       //If statement to determine BMI fee if applicable
       
-      if (getHolderBmi() > BMI_THRESHOLD)
+      if (policyHolder.getHolderBmi() > BMI_THRESHOLD)
       {
-         total += (getHolderBmi() - BMI_THRESHOLD) * BMI_FEE;
+         total += (policyHolder.getHolderBmi() - BMI_THRESHOLD) * BMI_FEE;
       }
       
       //return total
@@ -147,7 +173,8 @@ public class Policy
    {
       String str = "\nPolicy Number: " + getPolicyNumber() +
                    "\nProvider Name: " + getProviderName() +
-                   "\n\nPolicy Price: $%,.2f" + getPolicyPrice();
+                   policyHolder + 
+                   "\nPolicy Price: $" + getPolicyPrice();
       
       //return string
       return str;
