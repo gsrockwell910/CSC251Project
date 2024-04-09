@@ -49,6 +49,8 @@ public class Project_gavin_rockwell
             height = inputFile.nextDouble();
             weight = inputFile.nextDouble();
             
+            PolicyHolder polHol = new PolicyHolder(firstName, lastName, age, smokeStatus, height, weight);
+            
             //check for end of file
             if( inputFile.hasNext() )
             {
@@ -61,7 +63,7 @@ public class Project_gavin_rockwell
             }
             
             //add object to arraylist
-            policyList.add( new Policy(policyNumber, provider, firstName, lastName, age, smokeStatus, height, weight) );
+            policyList.add( new Policy(policyNumber, provider, polHol) );
         }
         
         //close file
@@ -70,13 +72,13 @@ public class Project_gavin_rockwell
         //display output
         for(Policy policy : policyList)
         {
-            policy.displayInformation();
+            System.out.println(policy);
             //two blanks between policies
             System.out.println();
             System.out.println();
             
             //determine number of smokers
-            if( policy.getSmokingStatus().equalsIgnoreCase("smoker") )
+            if( policy.getPolicyHolder().getSmokingStatus().equalsIgnoreCase("smoker") )
             {
                   totalSmoke++;
             }
@@ -84,8 +86,8 @@ public class Project_gavin_rockwell
         //blank line
         System.out.println();
         //display smokers
-        System.out.printf("The number of policies with a smoker is: %d \n\nThe number of policies with a non-smoker is: %d", 
-                           totalSmoke, (policyList.size() - totalSmoke) );
+        System.out.printf("There were %d Policy objects created. \n\nThe number of policies with a smoker is: %d \n\nThe number of policies with a non-smoker is: %d", 
+                           Policy.numPol, totalSmoke, (policyList.size() - totalSmoke) );
       
    }
 }
