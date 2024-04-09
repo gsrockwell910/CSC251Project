@@ -164,7 +164,28 @@ public class PolicyHolder
       
       return (holderWeight * CONVERSION_FACTOR) / (holderHeight * holderHeight);
    }
-   
    //End calculation
+   
+   //Start toString
+   
+   /**
+      The toString method returns the string representation of an object.
+   */
+   public String toString()
+   {
+      String str = "\nPolicyholder's First Name: " + getHolderFirstName() +
+                   "\nPolicyholder's Last Name: " + getHolderLastName() +
+                   "\nPolicyholder's Age: " + getHolderAge() +
+                   "\nPolicyholder's Smoking Status (smoker/non-smoker): " + getSmokingStatus() +
+                   "\nPolicyholder's Height: " + getHolderHeight() + " inches" +
+                   "\nPolicyholder's Weight: " + getHolderWeight() + " pounds" +
+                   "\nPolicyholder's BMI: %.2f" + getHolderBmi();                                                                    
+      
+      //return string
+      return str;
+   }
+   
+   //End toString
+
 
 }
