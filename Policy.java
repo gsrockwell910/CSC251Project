@@ -35,9 +35,9 @@ public class Policy
    */
    public Policy(String polNum, String provName, PolicyHolder polHol)
    {
-      policyNumber = polNum;
-      providerName = provName;
-      policyHolder = new PolicyHolder(polHol);
+      this.policyNumber = polNum;
+      this.providerName = provName;
+      this.policyHolder = new PolicyHolder(polHol);
       
       numPol++;
    }
@@ -52,7 +52,7 @@ public class Policy
    
    public void setPolicyNumber(String num)
    {
-      policyNumber = num;
+      this.policyNumber = num;
    }
    
    /**
@@ -63,7 +63,7 @@ public class Policy
    
    public void setProviderName(String pName)
    {
-      providerName = pName;
+      this.providerName = pName;
    }
    
    /**
@@ -74,7 +74,7 @@ public class Policy
    
    public void setPolicyHolder(PolicyHolder polHol)
    {
-      policyHolder = new PolicyHolder(polHol);
+      this.policyHolder = new PolicyHolder(polHol);
    }
 
    //End mutator methods
@@ -171,13 +171,10 @@ public class Policy
    */
    public String toString()
    {
-      String str = "\nPolicy Number: " + getPolicyNumber() +
-                   "\nProvider Name: " + getProviderName() +
-                   policyHolder + 
-                   "\nPolicy Price: $" + getPolicyPrice();
-      
-      //return string
-      return str;
+      return String.format("Policy Number: " + policyNumber +
+                           "\nProvider Name: " + providerName +
+                           "\n" + policyHolder +
+                           "\nPolicy Price: $%.2f", getPolicyPrice());
    }
    
    //End toString method

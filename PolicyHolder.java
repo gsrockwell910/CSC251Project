@@ -57,12 +57,12 @@ public class PolicyHolder
 
    public PolicyHolder(PolicyHolder obj2)
    {
-      holderFirstName = obj2.holderFirstName;
-      holderLastName = obj2.holderLastName;
-      holderAge = obj2.holderAge;
-      smokingStatus = obj2.smokingStatus;
-      holderHeight = obj2.holderHeight;
-      holderWeight = obj2.holderWeight;
+      this.holderFirstName = obj2.getHolderFirstName();
+      this.holderLastName = obj2.getHolderLastName();
+      this.holderAge = obj2.getHolderAge();
+      this.smokingStatus = obj2.getSmokingStatus();
+      this.holderHeight = obj2.getHolderHeight();
+      this.holderWeight = obj2.getHolderWeight();
    }
 
    
@@ -76,7 +76,7 @@ public class PolicyHolder
    
    public void setHolderFirstName(String fName)
    {
-      holderFirstName = fName;
+      this.holderFirstName = fName;
    }
    
    /**
@@ -87,7 +87,7 @@ public class PolicyHolder
    
    public void setHolderLastName(String lName)
    {
-      holderLastName = lName;
+      this.holderLastName = lName;
    }
    
    /**
@@ -98,7 +98,7 @@ public class PolicyHolder
    
    public void setHolderAge(int a)
    {
-      holderAge = a;
+      this.holderAge = a;
    }
    
    /**
@@ -109,7 +109,7 @@ public class PolicyHolder
    
    public void setSmokingStatus(String smoke)
    {
-      smokingStatus = smoke;
+      this.smokingStatus = smoke;
    }
 
    /**
@@ -120,7 +120,7 @@ public class PolicyHolder
    
    public void setHolderHeight(double h)
    {
-      holderHeight = h;
+      this.holderHeight = h;
    }
    
    /**
@@ -131,7 +131,7 @@ public class PolicyHolder
    
    public void setHolderWeight(double w)
    {
-      holderWeight = w;
+      this.holderWeight = w;
    }
    
    //End mutator
@@ -232,16 +232,13 @@ public class PolicyHolder
    */
    public String toString()
    {
-      String str = "\nPolicyholder's First Name: " + getHolderFirstName() +
-                   "\nPolicyholder's Last Name: " + getHolderLastName() +
-                   "\nPolicyholder's Age: " + getHolderAge() +
-                   "\nPolicyholder's Smoking Status (smoker/non-smoker): " + getSmokingStatus() +
-                   "\nPolicyholder's Height: " + getHolderHeight() + " inches" +
-                   "\nPolicyholder's Weight: " + getHolderWeight() + " pounds" +
-                   "\nPolicyholder's BMI: " + getHolderBmi();                                                                    
-      
-      //return string
-      return str;
+      return String.format("Policyholder's First Name: " + holderFirstName + 
+                           "\nPolicyholder's Last Name: " + holderLastName + 
+                           "\nPolicyholder's Age: " + holderAge +
+                           "\nPolicyholder's Smoking Status: " + smokingStatus +
+                           "\nPolicyholder's Height: " + holderHeight + " inches" +
+                           "\nPolicyholder's Weight: " + holderWeight + " pounds" +
+                           "\nPolicyholder's BMI: %.2f" , getHolderBmi());
    }
    
    //End toString

@@ -49,8 +49,6 @@ public class Project_gavin_rockwell
             height = inputFile.nextDouble();
             weight = inputFile.nextDouble();
             
-            PolicyHolder polHol = new PolicyHolder(firstName, lastName, age, smokeStatus, height, weight);
-            
             //check for end of file
             if( inputFile.hasNext() )
             {
@@ -61,6 +59,8 @@ public class Project_gavin_rockwell
             {
                inputFile.nextLine();
             }
+            
+            PolicyHolder polHol = new PolicyHolder(firstName, lastName, age, smokeStatus, height, weight);
             
             //add object to arraylist
             policyList.add( new Policy(policyNumber, provider, polHol) );
